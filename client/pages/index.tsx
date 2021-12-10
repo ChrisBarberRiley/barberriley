@@ -1,14 +1,10 @@
-import { gql } from '@apollo/client';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '../components/Header';
-import client from '../src/lib/apollo-client';
+import { getAllPosts } from '../src/lib/posts';
 import styles from '../styles/Home.module.css';
 
-type AppProps = {
-  posts: string[];
-};
 interface Posts {
   posts: {
     edges: Array<{
@@ -65,22 +61,8 @@ const Home: NextPage<Posts> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const GET_POSTS = gql`
-    query PostsQuery {
-      posts {
-        edges {
-          node {
-            title
-            slug
-          }
-        }
-      }
-    }
-  `;
+  const { data } = await getAllPosts();
 
-  const { data } = await client.query({
-    query: GET_POSTS,
-  });
   return {
     props: {
       posts: data.posts,
