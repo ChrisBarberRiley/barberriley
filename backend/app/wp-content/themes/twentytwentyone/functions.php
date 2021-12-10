@@ -130,6 +130,11 @@ if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {
 			add_theme_support( 'dark-editor-style' );
 		}
 
+    function add_cors_http_header(){
+      header("Access-Control-Allow-Origin: *");
+  }
+  add_action('init','add_cors_http_header');
+
 		$editor_stylesheet_path = './assets/css/style-editor.css';
 
 		// Note, the is_IE global variable is defined by WordPress and is used

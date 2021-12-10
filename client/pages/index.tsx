@@ -1,10 +1,24 @@
+import { gql } from '@apollo/client';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '../components/Header';
+import client from '../src/lib/apollo-client';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+type AppProps = {
+  posts: string[];
+};
+interface Posts {
+  posts: {
+    edges: Array<{
+      node: { title: string; slug: string };
+    }>;
+  };
+}
+
+const Home: NextPage<Posts> = ({ posts }) => {
+  console.log(posts);
   return (
     <div className={styles.container}>
       <Header />
@@ -24,35 +38,14 @@ const Home: NextPage = () => {
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
-        <div className={styles.grid}>
-          <a href='https://nextjs.org/docs' className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href='https://nextjs.org/learn' className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href='https://github.com/vercel/next.js/tree/master/examples'
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        {posts.edges.map(({ node }) => (
+          <div key={node.title} className={styles.grid}>
+            <a href='https://nextjs.org/docs' className={styles.card}>
+              <h2>{node.title} &rarr;</h2>
+              <p>Find in-depth information about Next.js features and API.</p>
+            </a>
+          </div>
+        ))}
       </main>
 
       <footer className={styles.footer}>
@@ -70,5 +63,29 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const GET_POSTS = gql`
+    query PostsQuery {
+      posts {
+        edges {
+          node {
+            title
+            slug
+          }
+        }
+      }
+    }
+  `;
+
+  const { data } = await client.query({
+    query: GET_POSTS,
+  });
+  return {
+    props: {
+      posts: data.posts,
+    },
+  };
+}
 
 export default Home;
