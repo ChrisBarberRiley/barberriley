@@ -1,0 +1,15 @@
+ul.nav__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+ul.nav__main {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+ul.nav__main li {
+  padding: 1rem;
+}
