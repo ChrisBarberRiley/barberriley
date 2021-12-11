@@ -1,7 +1,9 @@
-ul.nav__container {
+nav.nav__container {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  width: 100%;
+  align-items: center;
 }
 
 ul.nav__main {
