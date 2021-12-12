@@ -16,7 +16,6 @@ interface Posts {
 }
 
 const Home: NextPage<Posts> = ({ posts }) => {
-  console.log(posts);
   return (
     <div className={styles.container}>
       <Header />
