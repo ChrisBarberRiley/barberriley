@@ -15,6 +15,7 @@ interface Post {
 }
 
 const Post: NextPage<Post> = ({ postBy: { title, content } }) => {
+  console.log(title);
   return (
     <div className={styles.container}>
       <Header />
@@ -26,7 +27,6 @@ const Post: NextPage<Post> = ({ postBy: { title, content } }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>{title}</h1>
-
         <div
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: content }}
@@ -40,12 +40,15 @@ const Post: NextPage<Post> = ({ postBy: { title, content } }) => {
 export async function getStaticPaths() {
   const { data } = await getAllPosts();
   return {
-    paths: data.posts.edges.map(({ node }) => `/${node.slug}`) || [],
+    paths:
+      data.posts.edges.map(
+        ({ node }: { node: { slug: string } }) => `/${node.slug}`,
+      ) || [],
     fallback: true,
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { data } = await getPostBySlug(params.slug);
   return { props: data };
 }

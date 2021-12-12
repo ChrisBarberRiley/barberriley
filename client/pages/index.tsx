@@ -38,7 +38,7 @@ const Home: NextPage<Posts> = ({ posts }) => {
                   }}
                 >
                   <Typography variant='h5' gutterBottom component='div'>
-                    Hi, I'm Chris.
+                    Hi, I&apos;m Chris.
                   </Typography>
                   <Typography variant='body1' gutterBottom component='div'>
                     Currently Head of Engineering, avid developer and my passion
@@ -48,7 +48,7 @@ const Home: NextPage<Posts> = ({ posts }) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={9} xs={12} spacing={2}>
+          <Grid item md={9} xs={12} container spacing={2}>
             {posts.edges.map(({ node }) => (
               <ArchiveListItem
                 key={node.slug}

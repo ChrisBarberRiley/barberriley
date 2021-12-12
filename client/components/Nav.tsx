@@ -5,9 +5,9 @@ import UseSwitchesCustom from './ToggleSwitch';
 const Nav = () => {
   const navItems = [
     { name: 'Home', link: '/' },
-    { name: 'Blog', link: '/blog' },
-    { name: 'About', link: '/about' },
-    { name: 'Contact', link: '/contact' },
+    // { name: 'Blog', link: '/blog' },
+    // { name: 'About', link: '/about' },
+    // { name: 'Contact', link: '/contact' },
   ];
   return (
     <nav className={styles.nav__container}>
