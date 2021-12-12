@@ -19,11 +19,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
           primary: deepOrange,
           divider: deepOrange[700],
           background: {
-            default: deepOrange[900],
+            default: '#282c35',
             paper: deepOrange[900],
           },
           text: {
-            primary: '#fff',
+            primary: '#e6e6e6',
             secondary: grey[500],
           },
         }),

@@ -12,3 +12,14 @@ export const QUERY_GET_ALL_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_GET_POST_BY_SLUG = gql`
+  query PostQuery($slug: String) {
+    postBy(slug: $slug) {
+      id
+      title
+      excerpt
+      content
+    }
+  }
+`;
