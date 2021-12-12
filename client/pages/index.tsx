@@ -1,6 +1,7 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import ArchiveListItem from '../components/ArchiveListItem';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getAllPosts } from '../src/lib/posts';
@@ -20,34 +21,43 @@ const Home: NextPage<Posts> = ({ posts }) => {
     <div className={styles.container}>
       <Header />
       <Head>
-        <title>BarberRiley.com - Developers Blog</title>
+        <title>BarberRiley.com - The Developers Blog</title>
         <meta name='description' content='Some description...' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Container>
-        <Grid container spacing={2}>
-          <Grid item md={4} xs={12}>
-            <Typography variant='h5' gutterBottom component='div'>
-              Hi, I'm Chris.
-            </Typography>
-            <Typography variant='body1' gutterBottom component='div'>
-              Currently Head of Engineering, avid developer I love developing
-              people and products.
-            </Typography>
+        <Stack direction='row' justifyContent='space-between'>
+          <Grid item md={2} xs={12}>
+            <Grid item>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    bgcolor: 'primary.main',
+                    color: 'primary.contrastText',
+                    p: 2,
+                  }}
+                >
+                  <Typography variant='h5' gutterBottom component='div'>
+                    Hi, I'm Chris.
+                  </Typography>
+                  <Typography variant='body1' gutterBottom component='div'>
+                    Currently Head of Engineering, avid developer and my passion
+                    is in developing both people and products.
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item md={8} xs={12}>
+          <Grid item md={9} xs={12} spacing={2}>
             {posts.edges.map(({ node }) => (
-              <div key={node.title} className={styles.grid}>
-                <a href={node.slug} className={styles.card}>
-                  <h2>{node.title} &rarr;</h2>
-                  <p>
-                    Find in-depth information about Next.js features and API.
-                  </p>
-                </a>
-              </div>
+              <ArchiveListItem
+                key={node.slug}
+                slug={node.slug}
+                title={node.title}
+              />
             ))}
           </Grid>
-        </Grid>
+        </Stack>
       </Container>
 
       <Footer />
