@@ -24,7 +24,7 @@ const Home: NextPage<Posts> = ({ posts }) => {
         <meta name='description' content='Some description...' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Container>
+      <Container className={styles.main}>
         <Stack direction='row' justifyContent='space-between'>
           <Grid item md={2} xs={12}>
             <Grid item>
@@ -40,8 +40,8 @@ const Home: NextPage<Posts> = ({ posts }) => {
                     Hi, I&apos;m Chris.
                   </Typography>
                   <Typography variant='body1' gutterBottom component='div'>
-                    Currently Head of Engineering, avid developer and my passion
-                    is in developing both people and products.
+                    Currently Head of Engineering, avid developer and I have a
+                    passion for developing both people and products.
                   </Typography>
                 </Box>
               </Grid>

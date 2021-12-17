@@ -7,7 +7,7 @@ import getDesignTokens from '../src/theme';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
 
   const theme = useMemo(
     () => createTheme(getDesignTokens(mode ? 'dark' : 'light')),
