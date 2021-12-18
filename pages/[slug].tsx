@@ -35,7 +35,7 @@ const Post: NextPage<Post> = ({ title, content }) => {
             </Box>
           </Grid>
           <Grid item md={3} xs={12}>
-            <Box sx={{ bgcolor: 'primary.main' }}>
+            <Box sx={{ bgcolor: 'primary.main' }} mb={3}>
               <Current />
             </Box>
           </Grid>

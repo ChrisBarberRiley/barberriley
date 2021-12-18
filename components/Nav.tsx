@@ -5,7 +5,9 @@ import UseSwitchesCustom from './ToggleSwitch';
 const Nav = () => {
   const navItems = [
     { name: 'Home', link: '/' },
-    // { name: 'Blog', link: '/blog' },
+    { name: 'Uses', link: '/uses' },
+    { name: 'Reading', link: '/books' },
+    { name: 'Tech stack', link: '/tech' },
     // { name: 'About', link: '/about' },
     // { name: 'Contact', link: '/contact' },
   ];
