@@ -26,7 +26,7 @@ const Post: NextPage<Post> = ({ title, content }) => {
       <Container className={styles.main} maxWidth='lg'>
         <Grid container spacing={2} xs={12}>
           <Grid item md={9}>
-            <Box p={3}>
+            <Box>
               <h1 className={styles.title}>{title}</h1>
               <div
                 className={styles.description}
@@ -48,6 +48,7 @@ const Post: NextPage<Post> = ({ title, content }) => {
 
 export async function getStaticPaths() {
   const { data } = await getAllPosts();
+
   return {
     paths:
       data.posts.edges.map(
@@ -59,6 +60,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { data } = await getPostBySlug(params.slug);
+
+  if (!data.postBy) {
+    return {
+      notFound: true,
+    };
+  }
+
   const { title, slug, excerpt, content } = data.postBy;
   return {
     props: {

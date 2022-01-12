@@ -1,5 +1,4 @@
 import BookIcon from '@mui/icons-material/Book';
-import DevicesIcon from '@mui/icons-material/Devices';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -13,7 +12,7 @@ export default function Current() {
   const data = [
     { icon: <HandymanIcon />, text: 'I am using', path: '/uses' },
     { icon: <BookIcon />, text: 'Currently reading', path: '/books' },
-    { icon: <DevicesIcon />, text: 'My Tech Stack', path: '/tech' },
+    // { icon: <DevicesIcon />, text: 'My Tech Stack', path: '/tech' },
   ];
 
   return (
