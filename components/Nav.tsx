@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styles from '../styles/Nav.module.css';
-import UseSwitchesCustom from './ToggleSwitch';
 
 const Nav = () => {
   const navItems = [
@@ -20,8 +19,6 @@ const Nav = () => {
           </li>
         ))}
       </ul>
-
-      <UseSwitchesCustom />
     </nav>
   );
 };

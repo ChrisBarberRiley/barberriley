@@ -24,7 +24,7 @@ const Post: NextPage<Post> = ({ title, content }) => {
       </Head>
 
       <Container className={styles.main} maxWidth='lg'>
-        <Grid container spacing={2} xs={12}>
+        <Grid item container spacing={2} xs={12}>
           <Grid item md={9}>
             <Box>
               <h1 className={styles.title}>{title}</h1>
