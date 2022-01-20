@@ -7,7 +7,7 @@ interface ListItem {
 
 function ArchiveListItem({ title, slug }: ListItem) {
   return (
-    <div key={title} className={styles.grid}>
+    <div key={title} className='text-metal-500 hover:text-white'>
       <a href={slug} className={styles.card}>
         <h2>{title} &rarr;</h2>
       </a>

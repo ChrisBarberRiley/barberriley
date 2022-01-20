@@ -1,9 +1,8 @@
-import styles from '../styles/Header.module.css';
 import Nav from './Nav';
 
 const Header = () => {
   return (
-    <div className={styles.header}>
+    <div className='bg-midnight-500 p-4 flex'>
       <Nav />
     </div>
   );

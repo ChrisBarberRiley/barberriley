@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import styles from '../styles/Nav.module.css';
 
 const Nav = () => {
   const navItems = [
@@ -10,12 +9,15 @@ const Nav = () => {
     // { name: 'About', link: '/about' },
     // { name: 'Contact', link: '/contact' },
   ];
+
   return (
-    <nav className={styles.nav__container}>
-      <ul className={styles.nav__main}>
+    <nav>
+      <ul className='flex'>
         {navItems.map(({ name, link }) => (
-          <li key={name}>
-            <Link href={link}>{name}</Link>
+          <li className='p-4' key={name}>
+            <Link href={link}>
+              <a className='text-metal-500 hover:text-white'>{name}</a>
+            </Link>
           </li>
         ))}
       </ul>
