@@ -1,4 +1,3 @@
-import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import ArchiveListItem from '../components/ArchiveListItem';
@@ -18,46 +17,25 @@ interface Posts {
 const Home: NextPage<Posts> = ({ posts }) => {
   return (
     <div className={styles.container}>
-      <Header />
       <Head>
         <title>BarberRiley.com - The Developers Blog</title>
         <meta name='description' content='Some description...' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Container className={styles.main}>
-        <Stack direction='row' justifyContent='space-between'>
-          <Grid item md={2} xs={12}>
-            <Grid item>
-              <Grid item xs={12}>
-                <Box
-                  sx={{
-                    bgcolor: 'primary.main',
-                    color: 'primary.contrastText',
-                    p: 2,
-                  }}
-                >
-                  <Typography variant='h5' gutterBottom component='div'>
-                    Hi, I&apos;m Chris.
-                  </Typography>
-                  <Typography variant='body1' gutterBottom component='div'>
-                    Currently Head of Engineering, avid developer and I have a
-                    passion for developing both people and products.
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item md={9} xs={12} container spacing={2}>
-            {posts.edges.map(({ node }) => (
-              <ArchiveListItem
-                key={node.slug}
-                slug={node.slug}
-                title={node.title}
-              />
-            ))}
-          </Grid>
-        </Stack>
-      </Container>
+
+      <Header />
+
+      <div className='lg:container mx-auto flex flex-wrap overflow-hidden'>
+        <div className='my-2 px-2 w-5/6 overflow-hidden'>
+          {posts.edges.map(({ node }) => (
+            <ArchiveListItem
+              key={node.slug}
+              slug={node.slug}
+              title={node.title}
+            />
+          ))}
+        </div>
+      </div>
 
       <Footer />
     </div>
