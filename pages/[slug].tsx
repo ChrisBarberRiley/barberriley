@@ -1,9 +1,7 @@
-import { Box, Container, Grid } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Current from '../components/Widgets/Current';
 import { getAllPosts, getPostBySlug } from '../src/lib/posts';
 import styles from '../styles/Home.module.css';
 
@@ -23,24 +21,16 @@ const Post: NextPage<Post> = ({ title, content }) => {
         <meta name='description' content='Some description...' />
       </Head>
 
-      <Container className={styles.main} maxWidth='lg'>
-        <Grid item container spacing={2} xs={12}>
-          <Grid item md={9}>
-            <Box>
-              <h1 className={styles.title}>{title}</h1>
-              <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: content }}
-              ></div>
-            </Box>
-          </Grid>
-          <Grid item md={3} xs={12}>
-            <Box sx={{ bgcolor: 'primary.main' }} mb={3}>
-              <Current />
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
+      <div className='px-4 max-w-xl mx-auto mt-6 mb-16 md:max-w-2xl md:mt-8 md:mb-20'>
+        <div className='p-4 prose'>
+          <h1 className='text-5xl'>{title}</h1>
+          <div
+            className='mt-3'
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );

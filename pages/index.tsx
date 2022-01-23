@@ -25,8 +25,8 @@ const Home: NextPage<Posts> = ({ posts }) => {
 
       <Header />
 
-      <div className='lg:container mx-auto flex flex-wrap overflow-hidden'>
-        <div className='my-2 px-2 w-5/6 overflow-hidden'>
+      <div className='px-4 max-w-xl mx-auto mt-6 mb-16 md:max-w-2xl md:mt-8 md:mb-20'>
+        <div className='my-2 px-2 overflow-hidden'>
           {posts.edges.map(({ node }) => (
             <ArchiveListItem
               key={node.slug}

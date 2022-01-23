@@ -2,7 +2,7 @@ import Nav from './Nav';
 
 const Header = () => {
   return (
-    <div className='bg-midnight-500 p-4 flex'>
+    <div className='bg-midnight-500 p-4 flex mb-8'>
       <Nav />
     </div>
   );

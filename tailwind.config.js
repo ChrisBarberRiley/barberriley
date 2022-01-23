@@ -22,6 +22,31 @@ module.exports = {
       yellow: colors.yellow,
     },
     extend: {},
+    typography: (theme) => ({
+      DEFAULT: {
+        css: {
+          color: theme('colors.metal.500'),
+          p: {
+            color: theme('colors.metal.500'),
+            marginTop: '2rem',
+          },
+          ul: {
+            li: {
+              listStyleType: 'disc',
+              marginLeft: '1rem',
+            },
+          },
+          a: {
+            '&:hover': {
+              color: '#F7941E',
+            },
+            color: theme('colors.metal.500'),
+            fontWeight: 'bold',
+            textDecoration: 'underline',
+          },
+        },
+      },
+    }),
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
