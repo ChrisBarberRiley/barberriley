@@ -36,7 +36,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ecs-task-definition.json
-          container-name: barberriley
+          container-name: barberriley-frontend
           image: 264936567933.dkr.ecr.eu-west-2.amazonaws.com/barberrile:${{ github.sha }}
 
       - name: Deploy new Task Definition to Amazon ECS
