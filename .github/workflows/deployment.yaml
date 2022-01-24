@@ -6,7 +6,7 @@ on:
 
 jobs:
   Deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -27,5 +27,6 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/barberriley:$IMAGE_TAG .
+          export DOCKER_BUILDKIT=1
+          docker build --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from "${ECR_REGISTRY}/barberriley" -t $ECR_REGISTRY/barberriley:$IMAGE_TAG -t $ECR_REGISTRY/barberriley:latest .
           docker push $ECR_REGISTRY/barberriley:$IMAGE_TAG
