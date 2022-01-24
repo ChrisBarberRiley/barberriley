@@ -1,4 +1,3 @@
-import { Box, Container, Grid, Stack } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Footer from '../components/Footer';
@@ -14,21 +13,15 @@ const Books: NextPage = () => {
         <meta name='description' content='Some description...' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Container className={styles.main}>
-        <Stack direction='row' justifyContent='space-between'>
-          <Grid item md={9} xs={12} container spacing={2}>
-            <Box>
-              <h1 className={styles.title}>Books</h1>
-              <div className={styles.description}>
-                <p>
-                  I am currently reading Team Topologies. I will update here
-                  with a comprehensive list in due course.
-                </p>
-              </div>
-            </Box>
-          </Grid>
-        </Stack>
-      </Container>
+      <div className='px-4 max-w-xl mx-auto mt-6 mb-16 md:max-w-2xl md:mt-8 md:mb-20'>
+        <div className='p-4 prose'>
+          <h1>Books</h1>
+          <p>
+            I am currently reading Team Topologies. I will update here with a
+            comprehensive list in due course.
+          </p>
+        </div>
+      </div>
 
       <Footer />
     </div>
