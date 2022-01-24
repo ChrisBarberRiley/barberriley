@@ -30,3 +30,21 @@ jobs:
           export DOCKER_BUILDKIT=1
           docker build --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from "${ECR_REGISTRY}/barberriley" -t $ECR_REGISTRY/barberriley:$IMAGE_TAG -t $ECR_REGISTRY/barberriley:latest .
           docker push $ECR_REGISTRY/barberriley:$IMAGE_TAG
+
+      - name: Update ECS Task Definition
+        id: create-task-definition
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: .utils/ecs-task-definition.json
+          container-name: barberriley
+          image: 264936567933.dkr.ecr.eu-west-2.amazonaws.com/barberrile:${{ github.sha }}
+
+      - name: Deploy new Task Definition to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.create-task-definition.outputs.task-definition }}
+          service: barberriley-service
+          cluster: barberriley
+
+      - name: Update Service and Force New Deployment
+        run: aws ecs update-service --cluster barberriley --service barberriley-service --force-new-deployment --region eu-west-2
