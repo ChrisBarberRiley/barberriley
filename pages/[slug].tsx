@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import { getAllPosts, getPostBySlug } from '../src/lib/posts';
-import styles from '../styles/Home.module.css';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { getAllPosts, getPostBySlug } from "../src/lib/posts";
+import styles from "../styles/Home.module.css";
 
 interface Post {
   title: string;
@@ -18,14 +18,14 @@ const Post: NextPage<Post> = ({ title, content }) => {
       <Header />
       <Head>
         <title>{title} - BarberRiley.com</title>
-        <meta name='description' content='Some description...' />
+        <meta name="description" content="Some description..." />
       </Head>
 
-      <div className='px-4 max-w-xl mx-auto mt-6 mb-16 md:max-w-2xl md:mt-8 md:mb-20'>
-        <div className='p-4 prose'>
-          <h1 className='text-5xl'>{title}</h1>
+      <div className="px-4 max-w-xl mx-auto mt-6 mb-16 md:max-w-2xl md:mt-8 md:mb-20">
+        <div className="p-4 prose">
+          <h1 className="text-5xl">{title}</h1>
           <div
-            className='mt-3'
+            className="mt-3"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>
@@ -65,6 +65,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       excerpt: excerpt || null,
       content: content || null,
     },
+    revalidate: 3600,
   };
 }
 
