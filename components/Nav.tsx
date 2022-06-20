@@ -5,7 +5,7 @@ const Nav = () => {
     { name: "Home", link: "/" },
     { name: "Uses", link: "/uses" },
     { name: "Reading", link: "/books" },
-    // { name: "Templates", link: "/templates" },
+    { name: "Templates", link: "/templates" },
     // { name: 'Tech stack', link: '/tech' },
     // { name: 'About', link: '/about' },
     // { name: 'Contact', link: '/contact' },
