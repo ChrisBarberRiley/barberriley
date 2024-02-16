@@ -17,9 +17,7 @@ function Footer() {
           <ul className='flex flex-row gap-x-5'>
             <li>
               <Link href='https://twitter.com/Chris_GBR' passHref>
-                <a target='_blank'>
-                  <FaTwitter size='30px' className='hover:text-white' />
-                </a>
+                <FaTwitter size='30px' className='hover:text-white' />
               </Link>
             </li>
             <li>
@@ -27,16 +25,12 @@ function Footer() {
                 href='https://www.linkedin.com/in/chris-barber-riley/'
                 passHref
               >
-                <a target='_blank'>
-                  <FaLinkedin size='30px' className='hover:text-white' />
-                </a>
+                <FaLinkedin size='30px' className='hover:text-white' />
               </Link>
             </li>
             <li>
               <Link href='https://github.com/ChrisBarberRiley' passHref>
-                <a target='_blank'>
-                  <FaGithub size='30px' className='hover:text-white' />
-                </a>
+                <FaGithub size='30px' className='hover:text-white' />
               </Link>
             </li>
           </ul>
